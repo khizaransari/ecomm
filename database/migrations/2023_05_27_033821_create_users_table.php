@@ -19,6 +19,7 @@ return new class () extends Migration {
             $table->string('email', 150)->unique();
             $table->integer('type')->default(1)->comment('0 == admin');
             $table->string('password');
+            $table->string('stripe_customer_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
