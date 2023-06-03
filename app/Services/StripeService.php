@@ -2,10 +2,7 @@
 
 namespace App\Services;
 
-use App\Exceptions\StripeException;
 use App\Models\StripeProduct;
-use Stripe\Exception\ApiErrorException;
-use Stripe\Price;
 use Stripe\Product;
 use Stripe\Stripe;
 
