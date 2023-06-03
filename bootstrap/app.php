@@ -100,7 +100,9 @@ $app->routeMiddleware([
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Illuminate\Validation\ValidationServiceProvider::class);
-
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class); // enalbled laravel commands
+$app->register(Illuminate\Validation\ValidationServiceProvider::class);
+$app->register(Pearl\RequestValidate\RequestServiceProvider::class);
 
 
 /*
