@@ -18,8 +18,6 @@ $router->get('/', function () use ($router) {
 });
 
 
-// $router->post('product', 'ProductController@store');
-// $router->get('products', 'ProductController@index');
 
 $router->group(['prefix' => 'products'], function () use ($router) {
     $router->get('/', 'ProductController@index');
