@@ -55,12 +55,11 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = $this->productRepository->findById($id);
-        $this->stripeService->findById($product->stripe_id); /// extra check for stripe
+        $stripe = $this->stripeService->findById($product->stripe_id); /// extra check for stripe
         DB::beginTransaction();
-        $this->stripeService->delete($product);
+        $this->stripeService->delete($stripe);
         $product = $this->productRepository->delete($product);
         DB::commit();
-        // return $product;
         return new SuccessResponse([]);
     }
 }

@@ -52,10 +52,9 @@ class StripeService
     }
 
 
-    public function delete(StripeProduct $product): void
+    public function delete(Product $product): void
     {
-        $stripeProduct = $this->findById($product->stripe_id);
-        $stripeProduct->delete();
+        $product->delete();
     }
 
 }
