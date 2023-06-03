@@ -5,7 +5,12 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/laravel/lumen-framework)](https://packagist.org/packages/laravel/lumen-framework)
 [![License](https://img.shields.io/packagist/l/laravel/lumen)](https://packagist.org/packages/laravel/lumen-framework)
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Project Setup
+ After clone this project run composer install command
+ Setup Stipe Key in .env file
+ Setup database after creating on you machine
+then run migration
+now its done you can openly create, update, delete, and show products on stripe 
 
 ## Official Documentation
 
