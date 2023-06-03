@@ -20,12 +20,10 @@ class StripeService
 
     public function create($request)
     {
-        $data = [
+        return Product::create([
             'name' => $request->name,
             'description' => $request->description,
-            'default_price' => $request->privce,
-        ];
-        return Product::create($data);
+        ]);
     }
 
 
