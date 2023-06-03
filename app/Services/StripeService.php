@@ -25,62 +25,37 @@ class StripeService
             'description' => $request->description,
             'default_price' => $request->privce,
         ];
-
-        try {
-            return Product::create($data);
-        } catch (\Stripe\Exception\ApiErrorException $e) {
-            throw new StripeException($e->getMessage(), $e->getCode());
-        }
+        return Product::create($data);
     }
 
 
-    public function findById(String $productId)
+    public function findById(String $Id)
     {
-        try {
-            return Product::retrieve($productId);
-        } catch (ApiErrorException $e) {
-            throw new StripeException($e->getMessage(), $e->getCode());
-        }
+        return Product::retrieve($Id);
     }
 
     public function getAll()
     {
-        try {
-            return  Product::all();
-        } catch (ApiErrorException $e) {
-            throw new StripeException($e->getMessage(), $e->getCode());
-        }
+        return  Product::all();
     }
 
     public function update(StripeProduct $product, $request)
     {
-
-        try {
-            Product::update(
-                $product->stripe_id,
-                [
-                    'name' => $request->name,
-                    'description' => $request->description,
-                ]
-            );
-
-        } catch (ApiErrorException $e) {
-            throw new StripeException($e->getMessage(), $e->getCode());
-        }
-
+        Product::update(
+            $product->stripe_id,
+            [
+                'name' => $request->name,
+                'description' => $request->description,
+            ]
+        );
         return $product;
     }
 
 
-    public function delete(StripeProduct $product)
+    public function delete(StripeProduct $product): void
     {
         $stripeProduct = $this->findById($product->stripe_id);
-
-        try {
-            return $stripeProduct->delete();
-        } catch (ApiErrorException $e) {
-            throw new StripeException($e->getMessage(), $e->getCode());
-        }
+        $stripeProduct->delete();
     }
 
 }

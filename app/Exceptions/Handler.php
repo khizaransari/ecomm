@@ -12,6 +12,7 @@ use Stripe\Exception\ApiErrorException;
 use Stripe\Exception\OAuth\InvalidRequestException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use App\Exceptions\StripeException as StripeExceptions;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -65,8 +66,8 @@ class Handler extends ExceptionHandler
         } elseif ($e instanceof ValidationException) {
             $key =array_key_first($e->response->original);
             throw RequestValidationException::errorMessage($e->response->original[$key][0]);
-        } elseif ($e instanceof ApiErrorException || $e instanceof InvalidRequestException) {
-            throw StripeException::errorMessage($e->getMessage(), $e->getCode());
+        } elseif ($e instanceof ApiErrorException || $e instanceof InvalidRequestException || $e instanceof StripeExceptions) {
+            throw StripeException::errorMessage($e->getMessage(), $e->getHttpStatus());
         } else {
             $e = new \Exception(
                 'Something went wrong and we have been notified about the problem',
