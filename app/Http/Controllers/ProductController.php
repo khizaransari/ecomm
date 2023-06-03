@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    protected $response = null;
     protected $stripeService;
     protected $productRepository;
 
